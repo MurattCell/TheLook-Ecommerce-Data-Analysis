@@ -50,7 +50,9 @@ RETURN
     IF(ToplamHarcama < 100, "1. Düşük (0-100$)",
         IF(ToplamHarcama >= 100 && ToplamHarcama < 500, "2. Orta (100-500$)", "3. Yüksek (500$+)"))
 ```
+sources : https://www.kaggle.com/datasets/mustafakeser4/looker-ecommerce-bigquery-dataset
+www.linkedin.com/in/murattcell
 #Workintech #PostgreSQL #SQL #PowerBI #DataAnalysis #TheLookProject #VeriAnalizi #Portfolio
 
-www.linkedin.com/in/murattcell
+
 
