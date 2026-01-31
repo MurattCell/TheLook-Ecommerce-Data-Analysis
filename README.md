@@ -2,7 +2,8 @@
 
 Bu proje, **Workintech Veri Analitiği** eğitimi kapsamında gerçekleştirilen uçtan uca bir veri analizi çalışmasıdır.
 
-<img width="1456" height="794" alt="dashboard" src="https://github.com/user-attachments/assets/b7d613c3-1fbb-446d-bc20-e84998f3603f" />
+<img width="1538" height="849" alt="dashboard" src="https://github.com/user-attachments/assets/26de4c4d-9281-4bb4-8c8c-c4da05b35b9a" />
+
 
 ## 🚀 Proje Özeti
 Kurgusal bir e-ticaret şirketi olan "The Look"un ham verileri **PostgreSQL** üzerinde analiz edilmiş, **Star Schema** yapısında modellenmiş ve **Power BI** ile stratejik bir yönetim paneline dönüştürülmüştür.
@@ -50,7 +51,7 @@ RETURN
     IF(ToplamHarcama < 100, "1. Düşük (0-100$)",
         IF(ToplamHarcama >= 100 && ToplamHarcama < 500, "2. Orta (100-500$)", "3. Yüksek (500$+)"))
 ```
-https://drive.google.com/file/d/1A-l0SUffya87-pH2hBSNtC5t1_lp1T4K/view?usp=sharing
+https://drive.google.com/file/d/1wEv65Yndcf8c3YtoGPw3c2b5-LCn2x9T/view?usp=sharing
 
 https://www.kaggle.com/datasets/mustafakeser4/looker-ecommerce-bigquery-dataset
 
