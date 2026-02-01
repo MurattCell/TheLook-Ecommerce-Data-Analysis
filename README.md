@@ -49,7 +49,7 @@ Veri analizi sonucunda elde edilen kritik bulgular:
 
 GitHub dosya boyutu sınırları nedeniyle, `.pbix` dosyası harici kaynakta tutulmaktadır:
 
-* 📊 **Power BI Proje Dosyası (.pbix):** [Google Drive Üzerinden İndir](https://drive.google.com/file/d/1wEv65Yndcf8-c3YtoGPw3c2bS-LCn2x9T/view?usp=sharing)
+* 📊 **Power BI Proje Dosyası (.pbix):** [Google Drive Üzerinden İndir](https://drive.google.com/file/d/1K5mIr2W5mD9-fVinTgsmSMys4e3HXHU5/view?usp=sharing)
 * 💾 **Veri Seti (Kaggle):** [The Look E-Commerce Dataset](https://www.kaggle.com/datasets/mustafakeser4/looker-ecommerce-bigquery-dataset)
 * 🔗 **LinkedIn Profilim:** [Murat Çelik](https://www.linkedin.com/in/murattcell)
 
