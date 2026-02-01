@@ -1,63 +1,60 @@
-# The Look E-Ticaret Veri Analizi Projesi 📊
+# 📊 The Look E-Ticaret Veri Analizi Projesi
 
-Bu proje, **Workintech Veri Analitiği** eğitimi kapsamında gerçekleştirilen uçtan uca bir veri analizi çalışmasıdır.
+![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
 
-<img width="1538" height="849" alt="dashboard" src="https://github.com/user-attachments/assets/26de4c4d-9281-4bb4-8c8c-c4da05b35b9a" />
+Bu proje, Workintech Veri Analitiği eğitimi kapsamında geliştirilen uçtan uca (End-to-End) bir İş Zekası (BI) çalışmasıdır.
 
 
-## 🚀 Proje Özeti
-Kurgusal bir e-ticaret şirketi olan "The Look"un ham verileri **PostgreSQL** üzerinde analiz edilmiş, **Star Schema** yapısında modellenmiş ve **Power BI** ile stratejik bir yönetim paneline dönüştürülmüştür.
-<img width="1328" height="794" alt="Relational Data Modeling" src="https://github.com/user-attachments/assets/1f30c421-77bd-4061-aeb1-cf0e4d92ed96" />
+https://github.com/user-attachments/assets/c99eda84-e45d-4a6b-8385-e25e36b2bcfd
+
 
 ---
 
-## 🛠 1. Aşama: SQL ile Veri Kontrolü ve Keşif (Data Validation)
-Power BI aşamasına geçmeden önce, verinin tutarlılığını anlamak için **PostgreSQL** üzerinde kritik kontroller gerçekleştirdim. Veriyi doğrudan görselleştirmek yerine, önce SQL sorguları ile şu sorulara cevap aradım:
+## 🎯 Projenin Amacı
+Kurgusal bir e-ticaret firması olan **"The Look"**un ham satış ve müşteri verilerini analiz ederek; yönetim ekibinin **satış trendlerini, iade oranlarını ve müşteri davranışlarını** tek bir ekrandan takip edebilmesini sağlamak.
 
-### 📅 A) Tarih Aralığı Kontrolü
-Verisetinin kapsamını doğruladım.
-```sql
--- Sonuç: 06-01-2019 ile 17-01-2024 arası veriler mevcut.
-SELECT
-    MIN(created_at) as baslangic_tarihi,
-    MAX(created_at) as bitis_tarihi
-FROM orders;
-SELECT
-    category, COUNT(*) as satis_adedi
-FROM products
-GROUP BY category
-ORDER BY satis_adedi DESC;
-/* Özet Bulgular:
-- Complete: 31,354 | Shipped: 37,577
-- Processing: 25,156 | Cancelled: 18,609
-- Returned: 12,530 (Analiz edilmesi gereken kritik grup)
-*/
-SELECT
-    status, COUNT(*) as durum
-FROM orders
-GROUP BY status;
+## 🛠️ Kullanılan Teknolojiler ve Süreç
 
----DAX HESAPLAMALARI-----
+Projede verinin doğruluğundan görselleştirilmesine kadar şu adımlar izlenmiştir:
 
-İade Oranı = 
-VAR IadeSayisi = CALCULATE(COUNTROWS('order_items'), 'order_items'[status] = "Returned") + 0
-VAR ToplamSatis = COUNTROWS('order_items')
-RETURN
-DIVIDE(IadeSayisi, ToplamSatis, 0)
+* **SQL (PostgreSQL):** Veri keşfi (Data Exploration), satır/sütun tutarlılık kontrolleri ve tablolar arası ilişkilerin (Foreign Key) analizi.
+* **Veri Modelleme:** Power BI üzerinde **Star Schema** mimarisi kurularak performans artırıldı.
+* **DAX (Data Analysis Expressions):** `DISTINCTCOUNT`, `CALCULATE`, `TIME INTELLIGENCE` fonksiyonları ile dinamik metrikler (Örn: Aktif Müşteri Sayısı) oluşturuldu.
+* **Görselleştirme:** Harita, KPI kartları ve Donut grafikleri ile etkileşimli dashboard tasarımı.
 
-Harcama Kategorisi = 
-VAR ToplamHarcama = CALCULATE(SUM(order_items[sale_price]))
-RETURN
-    IF(ToplamHarcama < 100, "1. Düşük (0-100$)",
-        IF(ToplamHarcama >= 100 && ToplamHarcama < 500, "2. Orta (100-500$)", "3. Yüksek (500$+)"))
-```
-https://drive.google.com/file/d/1wEv65Yndcf8c3YtoGPw3c2b5-LCn2x9T/view?usp=sharing
+---
 
-https://www.kaggle.com/datasets/mustafakeser4/looker-ecommerce-bigquery-dataset
+## 🧠 Veri Modeli (Star Schema)
 
-www.linkedin.com/in/murattcell
+Karmaşık veri setleri, analiz performansını artırmak için "Fact" ve "Dimension" tabloları olarak ayrıştırılmıştır.
 
-#Workintech #PostgreSQL #SQL #PowerBI #DataAnalysis #TheLookProject #VeriAnalizi #Portfolio
 
+<img width="1328" height="794" alt="Relational Data Modeling" src="https://github.com/user-attachments/assets/a68a6ab7-f6c6-4706-a7fe-9daba1d30dde" />
+
+---
+
+## 💡 Çıkarımlar ve İş İçgörüleri (Business Insights)
+
+Veri analizi sonucunda elde edilen kritik bulgular:
+
+1.  **Müşteri Sadakati:** Toplam kayıtlı üye sayısı 100K olmasına rağmen, seçili dönemdeki aktif müşteri oranı dönemsel dalgalanmalar göstermektedir.
+2.  **İade Analizi:** Bazı ürün kategorilerindeki iade oranlarının ortalamanın üzerinde olduğu tespit edilmiştir (Detaylar dashboard sol panelde).
+3.  **Küresel Dağılım:** Müşteri yoğunluğu Amerika ve Avrupa kıtasında toplanırken, Asya pazarında büyüme potansiyeli görülmektedir.
+
+---
+
+## 📂 Dosyalar ve Linkler
+
+GitHub dosya boyutu sınırları nedeniyle, `.pbix` dosyası harici kaynakta tutulmaktadır:
+
+* 📊 **Power BI Proje Dosyası (.pbix):** [Google Drive Üzerinden İndir](https://drive.google.com/file/d/1wEv65Yndcf8-c3YtoGPw3c2bS-LCn2x9T/view?usp=sharing)
+* 💾 **Veri Seti (Kaggle):** [The Look E-Commerce Dataset](https://www.kaggle.com/datasets/mustafakeser4/looker-ecommerce-bigquery-dataset)
+* 🔗 **LinkedIn Profilim:** [Murat Çelik](https://www.linkedin.com/in/murattcell)
+
+---
+
+> **Not:** Bu proje eğitim amaçlıdır.
 
 
